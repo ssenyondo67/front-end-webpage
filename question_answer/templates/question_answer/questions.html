@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Question and Answer</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <style>
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+    .form{
+ 
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+ </style> 
+  </head>
+<body >
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <nav id="sidebar" class="border-right mx-2 shadow bg-white align-content-center" style="width:35%; height: 100vh; display: block;position: fixed;" >
+     
+          <div class="sidebar-header bg-white" style="width: inherit;position: fixed; top: 0;overflow: hidden;" >
+            <h3 class="text-center font-weight-bold">questions</h3>
+            
+          </div>
+          <div class="qustion mt-5 mb-5">
+        <!-- looping through the question categories available -->
+      <p id="dod"></p>
+      <div class=" main bg-light overflow-auto container" style="height:79vh; overflow-y: scroll; ">
+        <div class="">
+          <div class="question-list ml-1  pt-1 panel-group" id="lax">
+            <div class="accordion" id="accordionExample">
+              {% for category in categories %}
+              <div class="accordion-item m-2 shadow-sm">
+                <h2 class="accordion-header">
+                  <button id="heading{{category}}" class="accordion-button rounded-3 bg-white " onclick="response(this.id)" style="color: #330066;font-size: medium;">
+                    What this protective attribute is relates to the second question
+                  </button>
+                </h2>
+              </div>
+              {% endfor %}
+            </div></div></div></div>
+
+          </div>
+          <div class="bg-light " style="position: fixed; bottom: 0;height: 8vh; width: inherit;">
+              <ul class="pagination pagination-sm justify-content-center pt-2">
+                <li class="page-item">
+                    <a class="page-link" href="page-link">previous</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="page-link">1</a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="page-link">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="page-link">3</a>
+                </li>
+                <li class="page-item ">
+                  <a class="page-link"  href="page-link">next</a>
+                </li>
+                <li class="page-item disabled">
+                  <a class="page-link" tabindex="-1" href="page-link">skip to</a>
+                </li>
+              </ul>
+            </div>
+    </nav>
+    
+    <div id="display_content" class="justify-content-end  ml" style="width:65%;margin-left: 35%;">
+     
+        {% for category in categories %}
+        <div class="accordion-item m-2 shadow-sm">
+          
+          <div id="collapse{{category}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <!-- collapsing response -->
+            <div class="accordion-body row p-5" style="height: 100%;width: 100%; overflow: hidden;">
+  
+              <dcol-5iv class="other-response align-content-lg-end">
+                <div class="form border-primary align-items-end w-100">
+                <form class=" form-group  rounded bg-white pb-1 shadow ">
+                  <div class="form-group text-center px-2">
+                    <label for="exampleFormControlTextarea1">Enter Response</label>
+                    <textarea class="border-2 rounded form-control border-success" id="exampleFormControlTextarea1" rows="1"></textarea>
+                  </div>
+                  <button type="submit" class=" btn btn-primary w-100">Post response</button>
+                </form></div>
+                <div class="response ">
+                  {% for cat in categories %}
+                  <div class="container m-1">
+                    <div class="row shadow">  
+                        <div class="col-md-8 bg-white w-100 mr-0">
+                            <div class="media g-mb-30 media-comment">
+                              <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                                  <div class="g-mb-15">
+                                    <h5 class="h5 g-color-gray-dark-v1  mb-0">John Doe</h5>
+                                    <span class="g-color-gray-dark-v4 g-font-size-12">5 days ago</span>
+                                  </div>
+                            
+                                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel met felis in faucibus ras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                            
+                                  <ul class="list-inline d-sm-flex my-0">
+                                    <li class="list-inline-item g-mr-20">
+                                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                        178
+                                      </a>
+                                    </li>
+                                    <li class="list-inline-item g-mr-20">
+                                      <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                        34
+                                      </a>
+                                    </li>
+                                    
+                                  </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    {% endfor %}
+                     <!-- response end here -->
+
+                </div>
+              </div>
+              
+
+          </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var ID = [];
+        var NEWID = []
+            $("*").each(function() {
+                if (this.id) {
+                    ID.push(this.id);
+                }
+            });
+            for (let i = 0; i < ID.length; i++) {
+              
+              if (ID[i].substr(0,8) == "collapse") {
+                NEWID.push(ID[i]);
+                if (NEWID.length == 1) {
+                  continue;
+                }
+                document.getElementById(ID[i]).style.display = "none";
+              }
+              
+            }
+            //dod.innerHTML = ID
+            
+
+    // alert(NEWID+ 'Page is loaded');
+});
+      
+function openNav() {
+  document.getElementById("dispaly_cotent").style.backgroundColor = "red";
+  
+}
+function response(qnID) {
+  let questionId = qnID;
+  questionId = questionId.substr(7,);
+  resdis = "collapse"+questionId;
+  // alert(resdis);
+  var ID = [];
+        var NEWID = []
+            $("*").each(function() {
+                if (this.id) {
+                    ID.push(this.id);
+                }
+            });
+
+            for (let i = 0; i < ID.length; i++) {  
+              if (ID[i].substr(0,8) == "collapse") {
+                NEWID.push(ID[i]);
+              }
+            }
+
+            for (let j = 0; j < NEWID.length; j++) {
+              document.getElementById(NEWID[j]).style.display = "none";
+
+              if(NEWID[j]==resdis){
+                alert(resdis);
+                document.getElementById(NEWID[j]).style.display = "block";
+                document.getElementById(NEWID[j]).style.background = "lightblue";
+              }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
